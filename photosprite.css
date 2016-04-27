@@ -1,0 +1,314 @@
+.spriteImg0 {
+    background-image: url(sprite0.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+
+.spriteImg1 {
+    background-image: url(sprite1.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-a1 {
+    width: 200px;
+    height: 200px;
+    background-position: -5px -5px;
+}
+
+.sprite-a2 {
+    width: 200px;
+    height: 200px;
+    background-position: -215px -5px;
+}
+
+.sprite-a3 {
+    width: 200px;
+    height: 200px;
+    background-position: -425px -5px;
+}
+
+.sprite-a4 {
+    width: 200px;
+    height: 200px;
+    background-position: -635px -5px;
+}
+
+.sprite-a5 {
+    width: 200px;
+    height: 200px;
+    background-position: -5px -215px;
+}
+
+.sprite-k4 {
+    width: 200px;
+    height: 200px;
+    background-position: -215px -215px;
+}
+
+.sprite-k2 {
+    width: 200px;
+    height: 200px;
+    background-position: -425px -215px;
+}
+
+.sprite-k3 {
+    width: 200px;
+    height: 200px;
+    background-position: -635px -215px;
+}
+
+.sprite-k1 {
+    width: 200px;
+    height: 200px;
+    background-position: -5px -425px;
+}
+
+.sprite-k5 {
+    width: 200px;
+    height: 200px;
+    background-position: -215px -425px;
+}
+
+.sprite-m1 {
+    width: 200px;
+    height: 200px;
+    background-position: -425px -425px;
+}
+
+.sprite-m2 {
+    width: 200px;
+    height: 200px;
+    background-position: -635px -425px;
+}
+
+.sprite-m3 {
+    width: 200px;
+    height: 200px;
+    background-position: -5px -635px;
+}
+
+.sprite-m4 {
+    width: 200px;
+    height: 200px;
+    background-position: -215px -635px;
+}
+
+.sprite-m5 {
+    width: 200px;
+    height: 200px;
+    background-position: -425px -635px;
+}
+
+.sprite-n1 {
+    width: 200px;
+    height: 200px;
+    background-position: -635px -635px;
+}
+
+.sprite-n2 {
+    width: 200px;
+    height: 200px;
+    background-position: -845px -5px;
+}
+
+.sprite-n3 {
+    width: 200px;
+    height: 200px;
+    background-position: -845px -215px;
+}
+
+.sprite-n4 {
+    width: 200px;
+    height: 200px;
+    background-position: -845px -425px;
+}
+
+.sprite-n5 {
+    width: 200px;
+    height: 200px;
+    background-position: -845px -635px;
+}
+
+.sprite-o1 {
+    width: 200px;
+    height: 200px;
+    background-position: -5px -5px;
+}
+
+.sprite-o2 {
+    width: 200px;
+    height: 200px;
+    background-position: -215px -5px;
+}
+
+.sprite-o3 {
+    width: 200px;
+    height: 200px;
+    background-position: -425px -5px;
+}
+
+.sprite-o4 {
+    width: 200px;
+    height: 200px;
+    background-position: -635px -5px;
+}
+
+.sprite-o5 {
+    width: 200px;
+    height: 200px;
+    background-position: -5px -215px;
+}
+
+.sprite-r1 {
+    width: 200px;
+    height: 200px;
+    background-position: -215px -215px;
+}
+
+.sprite-r2 {
+    width: 200px;
+    height: 200px;
+    background-position: -425px -215px;
+}
+
+.sprite-r3 {
+    width: 200px;
+    height: 200px;
+    background-position: -635px -215px;
+}
+
+.sprite-r4 {
+    width: 200px;
+    height: 200px;
+    background-position: -5px -425px;
+}
+
+.sprite-r5 {
+    width: 200px;
+    height: 200px;
+    background-position: -215px -425px;
+}
+
+.sprite-s1 {
+    width: 200px;
+    height: 200px;
+    background-position: -425px -425px;
+}
+
+.sprite-s2 {
+    width: 200px;
+    height: 200px;
+    background-position: -635px -425px;
+}
+
+.sprite-s3 {
+    width: 200px;
+    height: 200px;
+    background-position: -5px -635px;
+}
+
+.sprite-s4 {
+    width: 200px;
+    height: 200px;
+    background-position: -215px -635px;
+}
+
+.sprite-s5 {
+    width: 200px;
+    height: 200px;
+    background-position: -425px -635px;
+}
+
+.sprite-y1 {
+    width: 200px;
+    height: 200px;
+    background-position: -635px -635px;
+}
+
+.sprite-y2 {
+    width: 200px;
+    height: 200px;
+    background-position: -845px -5px;
+}
+
+.sprite-y3 {
+    width: 200px;
+    height: 200px;
+    background-position: -845px -215px;
+}
+
+.sprite-y4 {
+    width: 200px;
+    height: 200px;
+    background-position: -845px -425px;
+}
+
+.sprite-y5 {
+    width: 200px;
+    height: 200px;
+    background-position: -845px -635px;
+}
+
+
+
+.spriteImg{background-image:url(sprite.jpg);}
+.sprite_a1_JPG{background-position:0px 0px;width:200px;height:200px;}
+.sprite_a2_JPG{background-position:0px -250px;width:200px;height:200px;}
+.sprite_a3_JPG{background-position:0px -500px;width:200px;height:200px;}
+.sprite_a4_JPG{background-position:0px -750px;width:200px;height:200px;}
+.sprite_a5_JPG{background-position:0px -1000px;width:200px;height:200px;}
+.sprite_k3_JPG{background-position:0px -1250px;width:200px;height:200px;}
+.sprite_k2_JPG{background-position:0px -1500px;width:200px;height:200px;}
+.sprite_k1_JPG{background-position:0px -1750px;width:200px;height:200px;}
+.sprite_k4_JPG{background-position:-250px 0px;width:200px;height:200px;}
+.sprite_k5_JPG{background-position:-250px -250px;width:200px;height:200px;}
+.sprite_m1_JPG{background-position:-250px -500px;width:200px;height:200px;}
+.sprite_m2_JPG{background-position:-250px -750px;width:200px;height:200px;}
+.sprite_m3_JPG{background-position:-250px -1000px;width:200px;height:200px;}
+.sprite_m4_JPG{background-position:-250px -1250px;width:200px;height:200px;}
+.sprite_m5_JPG{background-position:-250px -1500px;width:200px;height:200px;}
+.sprite_n1_JPG{background-position:-250px -1750px;width:200px;height:200px;}
+.sprite_n2_JPG{background-position:-500px 0px;width:200px;height:200px;}
+.sprite_n3_JPG{background-position:-500px -250px;width:200px;height:200px;}
+.sprite_n4_JPG{background-position:-500px -500px;width:200px;height:200px;}
+.sprite_n5_JPG{background-position:-500px -750px;width:200px;height:200px;}
+.sprite_o2_JPG{background-position:-500px -1000px;width:200px;height:200px;}
+.sprite_o1_JPG{background-position:-500px -1250px;width:200px;height:200px;}
+.sprite_o3_JPG{background-position:-500px -1500px;width:200px;height:200px;}
+.sprite_o4_JPG{background-position:-500px -1750px;width:200px;height:200px;}
+.sprite_o5_JPG{background-position:-750px 0px;width:200px;height:200px;}
+.sprite_r1_JPG{background-position:-750px -250px;width:200px;height:200px;}
+.sprite_r2_JPG{background-position:-750px -500px;width:200px;height:200px;}
+.sprite_r3_JPG{background-position:-750px -750px;width:200px;height:200px;}
+.sprite_r4_JPG{background-position:-750px -1000px;width:200px;height:200px;}
+.sprite_r5_JPG{background-position:-750px -1250px;width:200px;height:200px;}
+.sprite_s1_JPG{background-position:-750px -1500px;width:200px;height:200px;}
+.sprite_s2_JPG{background-position:-750px -1750px;width:200px;height:200px;}
+.sprite_s3_JPG{background-position:-1000px 0px;width:200px;height:200px;}
+.sprite_s4_JPG{background-position:-1000px -250px;width:200px;height:200px;}
+.sprite_s5_JPG{background-position:-1000px -500px;width:200px;height:200px;}
+.sprite_y1_JPG{background-position:-1000px -750px;width:200px;height:200px;}
+.sprite_y2_JPG{background-position:-1000px -1000px;width:200px;height:200px;}
+.sprite_y3_JPG{background-position:-1000px -1250px;width:200px;height:200px;}
+.sprite_y4_JPG{background-position:-1000px -1500px;width:200px;height:200px;}
+.sprite_y5_JPG{background-position:-1000px -1750px;width:200px;height:200px;}
+
+.RouletteImg0{background-image:url(600ka.gif);width:200px;height:200px;}
+.RouletteImg1{background-image:url(600kb.gif);width:200px;height:200px;}
+.LogoImg{background-image:url(logo.jpg);width:200px;height:200px;}
+
+.Car1{position: relative;width: 750px;height: 714px;}
+.Car2{position: relative;width: 700px;height: 714px;}
+.CarPos1{top: 0px;}
+.CarPos2{right: 0px;}
+
+.haisya0{position: absolute;right: 215px;top: 340px;}
+.haisya1{position: absolute;left: 90px;top: 340px;}
+.haisya2{position: absolute;right: 215px;bottom: -40px;}
+.haisya3{position: absolute;left: 90px;bottom: -40px;}
+.haisya4{position: absolute;right: 175px;top: 340px;}
+.haisya5{position: absolute;left: 75px;top: 340px;}
+.haisya6{position: absolute;right: 175px;bottom: -40px;}
+.haisya7{position: absolute;left: 75px;bottom: -40px;}

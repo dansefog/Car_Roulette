@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+    <!--ブートストラップ使う準備-->
+    <meta http-equiv="content-style-type" content="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <!--CSS読み込み-->
+    <!--
+    <link rel="stylesheet" type="text/css" href="./carstyle.css">
+  -->
+    <link rel="stylesheet" type="text/css" href="./photosprite.css">
+    <title>配車ルーレット!!</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <!--タイトル-->
+      <div class="col-sm-12">
+        <h1 id = "title">配車決めるよ！</h1>
+      </div>
+    </div>
+
+    <!--画像-->
+
+    <!--ボタン-->
+    <div class="row">
+      <div class="col-sm-6">
+        <button type="button" class="btn btn-warning btn-bg" id="RouletteStartBtn">配車決めるよ！</button>
+        <button type="button" class="btn btn-primary btn-bg" id="RouletteResetBtn">最初に戻すよ！</button>
+        <button type="button" class="btn btn-primary btn-bg" id="RouletteTestBtn">配車変えずに遊ぶよ！</button>
+        <button type="button" class="btn btn-primary btn-bg" id="RouletteSetBtn">今の配車出すよ！</button>
+      </div>
+      <div id="messageView"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 Car1">
+        <!--ランダムに一顧-->
+          <img id="car1" class="CarPos1" src="Car200b.png"/>
+          <div class="haisya0"></div>
+          <div class="haisya1"></div>
+          <div class="haisya2"></div>
+          <div class="haisya3"></div>
+      </div>
+      <div class="col-md-6">
+        <!--ランダムに一顧-->
+        <div class="Car2">
+          <img class="CarPos2" src="Car200r.png"/>
+          <div class="haisya4"></div>
+          <div class="haisya5"></div>
+          <div class="haisya6"></div>
+          <div class="haisya7"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<!--以下、クライアント側のスクリプト-->
+<script type="text/javascript">
+  //var ioSocket = io.connect( "http://localhost:4000" ); // チャットサーバーに接続
+  var ioSocket = io.connect(); // チャットサーバーに接続
+  //クラスいじるようの配列
+  var name = ["abe", "king", "matya", "seno", "okura", "ryo", "sugitani", "yamami"];
+  var nameF = ["a", "k", "m", "n", "o", "r", "s", "y"];
+  var Allocation = [0, 1, 2, 3, 4, 5, 6, 7];  //配車順（数字はnameの並びでメンバーに振ったid）
+  var PhotoId  =   [0, 0, 0, 0, 0, 0, 0, 0]; //何枚目の写真か
+  //クライアント側で遊ぶよう
+  var TestAllocation = [0, 1, 2, 3, 4, 5, 6, 7];  //配車順（数字はnameの並びでメンバーに振ったid）
+  var TestPhotoId  =   [0, 0, 0, 0, 0, 0, 0, 0]; //何枚目の写真か
+  // サーバーからのデータ受け取り処理
+  ioSocket.on( "connect", function() {
+    for(var i = 0; i < 8; i++){
+      var $target = $('.haisya' + i);
+      //attrでクラス名を差し替え
+      var num = i % 2;
+      $target.attr('class', 'RouletteImg' + num).addClass('haisya' + i);
+    }
+  } ); // 接続
+  ioSocket.on( "disconnect", function() {} ); // 切断
+
+  //全部ロゴに初期化
+  ioSocket.on( "Roulette_init", function( data ) {
+    for(var i = 0; i < 8; i++){
+      var $target = $('.haisya' + i);
+      //attrでクラス名を差し替え
+      $target.attr('class', 'LogoImg').addClass('haisya' + i);
+    }
+    //画像のプレロード
+    prImg = new Image();
+	  prImg.src = "600ka.gif";
+    prImg.src = "600kb.gif";
+    prImg.src = "sprite0.png";
+    prImg.src = "sprite1.png";
+  });
+  // サーバーからデータをもらう（値初期化時）
+  ioSocket.on( "Roulette_setAlloc", function( data ) {
+    Allocation = data.Alloc;
+    PhotoId = data.Photo;
+    changeAlloc();
+  });
+  //サーバからデータもらう（ルーレットした時）
+  ioSocket.on( "Roulette_result", function( data ) {
+    Allocation = data.Alloc;
+    PhotoId = data.Photo;
+    Roulette();
+    /*デバッグ用
+    var str1 = "", str2 = "";
+    for(var i = 0; i < 8; i++){
+      str1 += nameF[Allocation[i]];
+      str2 += PhotoId[i];
+    }
+    //appendMessage(str1);
+    //appendMessage(str2);
+    デバッグ用ここまで*/
+  });
+
+  // 画面にメッセージを追記
+  function appendMessage( text ) {
+    $("#messageView").append( "<div>" + text + "</div>" );
+  }
+
+  // スタートボタン押した時の処理
+  $("#RouletteStartBtn").click( function() {
+      // クライアントからサーバーへ送信
+      checkRoulette();
+      //ioSocket.emit( "Roulette_start" );
+  });
+
+  // データ呼び出しボタン
+  $("#RouletteSetBtn").click( function() {
+      // クライアントからサーバーへ送信
+      ioSocket.emit( "Roulette_getAlloc" );
+  });
+
+  // リセットボタン
+  $("#RouletteResetBtn").click( function() {
+      // クライアントからサーバーへ送信
+      checkReset();
+      //ioSocket.emit( "Roulette_Reset" );
+  });
+  //お遊びボタン
+  $("#RouletteTestBtn").click( function() {
+      // クライアントがわのみで処理を完結
+      RouletteTest();
+  });
+  function Roulette(){
+    //ルーレットgif流す処理
+    for(var i = 0; i < 8; i++){
+      var $target = $('.haisya' + i);
+      //attrでクラス名を差し替え
+      var num = i % 2;
+      $target.attr('class', 'RouletteImg' + num).addClass('haisya' + i);
+    }
+    //以下に配車決定する処理
+    setTimeout('changeAlloc()',3000);
+  }
+  function changeAlloc() {
+    for(var i = 0; i < 8; i++){
+      var $target = $('.haisya' + i);
+      //attrでクラス名を差し替え
+      var nowName = nameF[Allocation[i]];
+      if(Allocation[i] < 4){
+        $target.attr('class', 'spriteImg0 sprite-' + nowName + PhotoId[i]).addClass('haisya' + i);
+      }
+      else{
+        $target.attr('class', 'spriteImg1 sprite-' + nowName + PhotoId[i]).addClass('haisya' + i);
+      }
+    }
+  }
+  //サーバの値をかえるときの警告
+  function checkRoulette() {
+    // 「OK」時の処理開始 ＋ 確認ダイアログの表示
+	  if(window.confirm('配車変えるよ？')){
+      window.location.href="#car1"
+		  ioSocket.emit( "Roulette_start" );
+	  }else{
+    }
+	}
+  function checkReset() {
+    // 「OK」時の処理開始 ＋ 確認ダイアログの表示
+	  if(window.confirm('リセットするよ？')){
+		    ioSocket.emit( "Roulette_Reset" );
+	  }else{
+    }
+	}
+
+  //クライアントだけで遊んでもらう処理
+  function RouletteTest() {
+    ShuffleAllocation();
+    Roulette();
+  }
+  //配車ランダムに決める関数
+  function ShuffleAllocation () {
+    do{
+      Allocation = shuffle(Allocation);
+      //Allocation.shuffle();
+    }while(JudgeAlloc() === false);
+
+    // 1〜5の乱数を発生
+    for (var i = 0; i < PhotoId.length; i++){
+      PhotoId[i] = 1 + Math.floor( Math.random() * 5 );
+    }
+  }
+
+  //免許持ってない人をどらからはじく
+  function JudgeAlloc() {
+    if(name[Allocation[0]] === "きんぐ" || name[Allocation[4]] === "きんぐ"){return false;}
+    else if(name[Allocation[0]] === "やまみー" || name[Allocation[4]] === "やまみー"){return false;}
+    return true;
+  }
+
+  //シャッフル関数(ネットからコピペ)
+  function shuffle(array) {
+    var n = array.length, t, i;
+
+    while (n) {
+      i = Math.floor(Math.random() * n--);
+      t = array[n];
+      array[n] = array[i];
+      array[i] = t;
+    }
+
+    return array;
+  }
+
+</script>
+</body>
+</html>
